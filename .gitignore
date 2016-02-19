@@ -1,3 +1,7 @@
 .rspec
 /.bundle/
 /bin/
+gridlet.rb
+puzzle_01.rb
+puzzle_01.txt
+grid_structs_spec.rb
