@@ -20,9 +20,9 @@ describe "#row_groups" do
   it "yields 9 rows of 9 elements each" do
     file = File.read("spec/fixtures/simple.sudoku")
     puzzle = Puzzle.new(file)
-    intake_set = puzzle.consume
+    puzzle.consume
 
-    row_count = puzzle.row_groups(intake_set).count
+    row_count = puzzle.row_groups.count
     # no need to verify nbr of elements within subarrays
     # as this is explicitly defined by the #each_slice method
 
@@ -34,9 +34,9 @@ describe "#col_groups" do
   it "yields 9 cols of 9 elements each" do
     file = File.read("spec/fixtures/simple.sudoku")
     puzzle = Puzzle.new(file)
-    intake_set = puzzle.consume
+    puzzle.consume
 
-    col_count = puzzle.col_groups(intake_set).count
+    col_count = puzzle.col_groups.count
 
     expect(col_count).to eq 9
   end
@@ -46,10 +46,10 @@ describe "#gridlets" do
   it "yields 9 gridlets of 9 elements each" do
     file = File.read("spec/fixtures/simple.sudoku")
     puzzle = Puzzle.new(file)
-    intake_set = puzzle.consume
+    puzzle.consume
     min = 10 # set higher than subarray count to initialize
 
-    gridlet_count = puzzle.gridlets(intake_set).count
+    gridlet_count = puzzle.gridlets.count
     # min_count = puzzle.gridlets(intake_set).each {|e| min = e.count if e.count < min}
 
     expect(gridlet_count).to eq 9
@@ -59,9 +59,10 @@ describe "#gridlets" do
   it "returns the correct elements for the given sample" do
     file = File.read("spec/fixtures/simple.sudoku")
     puzzle = Puzzle.new(file)
-    intake_set = puzzle.consume
+    puzzle.consume
 
-    sample = puzzle.gridlets(intake_set)[4]
+    # pick an arbitrary gridlet to test for correct values"
+    sample = puzzle.gridlets[4]
 
     expect(sample.join("")).to eq "444555666"
   end
