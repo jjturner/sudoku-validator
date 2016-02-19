@@ -4,7 +4,11 @@ class Puzzle
   end
 
   def consume
-    @puzzle_file.scan(/\d/)
+    @puzzle_file.scan(/\d/).map {|i| i.to_i }
+  end
+
+  def incomplete(puzzle_vals)
+    puzzle_vals.include? 0
   end
 
   def row_groups(puzzle_vals)
