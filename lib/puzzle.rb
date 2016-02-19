@@ -1,6 +1,7 @@
 class Puzzle
   def initialize(puzzle_file)
     @puzzle_file = puzzle_file
+    self.consume
   end
 
   def consume

@@ -20,7 +20,6 @@ describe "#row_groups" do
   it "yields 9 rows of 9 elements each" do
     file = File.read("spec/fixtures/simple.sudoku")
     puzzle = Puzzle.new(file)
-    puzzle.consume
 
     row_count = puzzle.row_groups.count
     # no need to verify nbr of elements within subarrays
@@ -34,7 +33,6 @@ describe "#col_groups" do
   it "yields 9 cols of 9 elements each" do
     file = File.read("spec/fixtures/simple.sudoku")
     puzzle = Puzzle.new(file)
-    puzzle.consume
 
     col_count = puzzle.col_groups.count
 
@@ -46,7 +44,6 @@ describe "#gridlets" do
   it "yields 9 gridlets of 9 elements each" do
     file = File.read("spec/fixtures/simple.sudoku")
     puzzle = Puzzle.new(file)
-    puzzle.consume
     min = 10 # set higher than subarray count to initialize
 
     gridlet_count = puzzle.gridlets.count
@@ -59,7 +56,6 @@ describe "#gridlets" do
   it "returns the correct elements for the given sample" do
     file = File.read("spec/fixtures/simple.sudoku")
     puzzle = Puzzle.new(file)
-    puzzle.consume
 
     # pick an arbitrary gridlet to test for correct values"
     sample = puzzle.gridlets[4]
