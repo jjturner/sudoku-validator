@@ -20,5 +20,6 @@ class Validator
     # was provided for you. Don't be hesistant to extract new objects (and
     # write tests for them).
     puzzle = Puzzle.new(@puzzle_string)
+    raw_values = puzzle.consume
   end
 end

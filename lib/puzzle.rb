@@ -3,7 +3,7 @@ class Puzzle
     @puzzle_file = puzzle_file
   end
 
-  def intake
+  def consume
     @puzzle_file.scan(/\d/)
   end
 
