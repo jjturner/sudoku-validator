@@ -11,7 +11,6 @@ class Validator
     # --> so for all intents and purposes, this method is the
     # 'de facto' initializer/entry point for the class when invoked directly
     new(puzzle_string).validate
-    return @rows
   end
 
   def validate
@@ -20,9 +19,6 @@ class Validator
     # It's likely that you'll want to have many more classes than this one that
     # was provided for you. Don't be hesistant to extract new objects (and
     # write tests for them).
-    # puts @puzzle_string
     puzzle = Puzzle.new(@puzzle_string)
-    @rows = puzzle.parse
-    puts @rows[0]
   end
 end
