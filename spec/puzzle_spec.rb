@@ -63,3 +63,16 @@ describe "#gridlets" do
     expect(sample.join("")).to eq "444555666"
   end
 end
+
+describe "#groupings" do
+  it "returns three puzzle arrays: rows, cols, and gridlets, respectively" do
+    file = File.read("spec/fixtures/simple.sudoku")
+    puzzle = Puzzle.new(file)
+
+    rcg = puzzle.groupings
+    
+    expect(rcg[0][0].join()).to eq("111111111")
+    expect(rcg[1][0].join()).to eq("123456789")
+    expect(rcg[2][0].join()).to eq("111222333")
+  end
+end

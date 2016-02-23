@@ -1,4 +1,6 @@
 class Puzzle
+  attr_reader :puzzle_vals
+
   def initialize(puzzle_file)
     @puzzle_file = puzzle_file
     self.consume
@@ -12,6 +14,13 @@ class Puzzle
     @puzzle_vals.include? 0
   end
 
+  def groupings
+    ret = []
+    ret << row_groups
+    ret << col_groups
+    ret << gridlets
+  end
+  
   def row_groups
     @puzzle_vals.each_slice(9).to_a
   end

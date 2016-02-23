@@ -1,6 +1,7 @@
 require './lib/puzzle.rb'
 
 class Validator
+
   def initialize(puzzle_string)
     @puzzle_string = puzzle_string
   end
@@ -20,6 +21,13 @@ class Validator
     # was provided for you. Don't be hesistant to extract new objects (and
     # write tests for them).
     puzzle = Puzzle.new(@puzzle_string)
-    raw_values = puzzle.consume
+  end
+
+  def self.verify_rows(puzzle)
+    puzzle.row_groups.each do |e|
+      condensed = e - [0]
+      return false if condensed != condensed.uniq
+      condensed == condensed.uniq
+    end
   end
 end
