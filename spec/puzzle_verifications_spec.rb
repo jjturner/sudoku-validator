@@ -1,4 +1,4 @@
-require_relative '../lib/validator.rb'
+require_relative '../lib/validator'
 
 describe "Puzzle#incomplete" do
   it "returns true when puzzle contains a 0-value" do
@@ -22,6 +22,6 @@ describe "Validator#verify" do
 
     valid_cols = Validator.verify(puzzle.col_groups)
     
-    expect(valid_cols).to eq true # e.g., col vals = 1,2,3,4,5,6,7,8,9
+    expect(valid_cols).to eq true # e.g., col vals = ( 1..9 )
   end
 end

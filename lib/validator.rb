@@ -1,4 +1,4 @@
-require './lib/puzzle.rb'
+require '../lib/puzzle'
 
 class Validator
 

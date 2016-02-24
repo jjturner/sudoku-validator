@@ -1,4 +1,4 @@
-require_relative '../lib/puzzle.rb'
+require_relative '../lib/puzzle'
 
 describe "#consume" do
 
