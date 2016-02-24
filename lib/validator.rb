@@ -21,13 +21,16 @@ class Validator
     # was provided for you. Don't be hesistant to extract new objects (and
     # write tests for them).
     puzzle = Puzzle.new(@puzzle_string)
+    puzzle.groupings.each do |grouping|
+      verify(grouping)
+    end
   end
 
-  def self.verify_rows(puzzle)
-    puzzle.row_groups.each do |e|
+  def self.verify(grouping)
+    grouping.each do |e|
       condensed = e - [0]
       return false if condensed != condensed.uniq
-      condensed == condensed.uniq
     end
+    true
   end
 end
