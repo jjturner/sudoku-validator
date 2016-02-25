@@ -14,7 +14,6 @@ class Validator
     # --> so for all intents and purposes, this method is the
     # 'de facto' initializer/entry point for the class when invoked directly
     new(puzzle_string).validate
-
   end
 
   def validate
@@ -25,7 +24,8 @@ class Validator
     # write tests for them).
     puzzle = Puzzle.new(@puzzle_string)
     valid = Validator.collate_tests(puzzle.groupings)
-    message(valid)
+    complete = !puzzle.incomplete
+    message(valid, complete)
   end
 
   def self.collate_tests(groupings)
