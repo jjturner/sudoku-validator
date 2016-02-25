@@ -1,4 +1,6 @@
-require '../lib/puzzle'
+require_relative '../lib/puzzle'
+require_relative '../lib/output'
+include Output
 
 class Validator
 
@@ -12,6 +14,7 @@ class Validator
     # --> so for all intents and purposes, this method is the
     # 'de facto' initializer/entry point for the class when invoked directly
     new(puzzle_string).validate
+
   end
 
   def validate
@@ -21,9 +24,16 @@ class Validator
     # was provided for you. Don't be hesistant to extract new objects (and
     # write tests for them).
     puzzle = Puzzle.new(@puzzle_string)
-    puzzle.groupings.each do |grouping|
-      verify(grouping)
+    valid = Validator.collate_tests(puzzle.groupings)
+    message(valid)
+  end
+
+  def self.collate_tests(groupings)
+    groupings.each do |grouping|
+      test_result = verify(grouping)
+      return false if !test_result 
     end
+    true
   end
 
   def self.verify(grouping)

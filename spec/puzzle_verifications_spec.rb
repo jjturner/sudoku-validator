@@ -25,3 +25,21 @@ describe "Validator#verify" do
     expect(valid_cols).to eq true # e.g., col vals = ( 1..9 )
   end
 end
+
+describe "Validator#collate_tests" do
+  it "returns true if all tests pass" do
+    puzzle = Puzzle.new(File.read('spec/fixtures/valid_complete.sudoku'))
+
+    pass = Validator.collate_tests(puzzle.groupings)
+
+    expect(pass).to eq true
+  end
+
+  it "returns false if any tests fail" do
+    puzzle = Puzzle.new(File.read('spec/fixtures/simple.sudoku'))
+
+    pass = Validator.collate_tests(puzzle.groupings)
+
+    expect(pass).to eq false
+  end
+end
